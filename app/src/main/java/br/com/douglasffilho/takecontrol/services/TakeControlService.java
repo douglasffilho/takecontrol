@@ -5,9 +5,12 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+
+import java.net.URISyntaxException;
 
 import br.com.douglasffilho.takecontrol.App;
 import br.com.douglasffilho.takecontrol.MainActivity;
@@ -29,6 +32,12 @@ public class TakeControlService extends Service {
                 .build();
 
         this.startForeground(1, persistentNotification);
+
+        try {
+            WebService.start();
+        } catch (URISyntaxException e) {
+            Log.e("TakeControlService", e.getReason());
+        }
 
         return Service.START_NOT_STICKY;
     }
