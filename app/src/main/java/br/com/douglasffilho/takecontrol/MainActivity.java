@@ -1,5 +1,6 @@
 package br.com.douglasffilho.takecontrol;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         this.finish();
         System.exit(0);
+    }
+
+    public void goToControlTest(final View view) {
+        final Intent controlTestIntent = new Intent(this, ControlTestActivity.class);
+        startActivity(controlTestIntent);
     }
 
     private void registerUIUpdater() {

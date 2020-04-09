@@ -1,0 +1,10 @@
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/app_name"
+    android:packageNames="br.com.douglasffilho.takecontrol,com.tencent.mm,com.android.systemui"
+    android:accessibilityEventTypes="typeAllMask"
+    android:accessibilityFlags="flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:canRetrieveWindowContent="true"
+    android:canRequestTouchExplorationMode="true"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:settingsActivity="br.com.douglasffilho.takecontrol.MainActivity"
+    android:canPerformGestures="true" />
