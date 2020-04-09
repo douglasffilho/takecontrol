@@ -12,7 +12,6 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
@@ -66,7 +65,14 @@ public class FreeHandCanvas extends View {
         float x = event.getX();
         float y = event.getY();
 
-        return Objects.requireNonNull(EVENT_HANDLER.get(event.getAction())).apply(x, y);
+        final BiFunction<Float, Float, Boolean> function = EVENT_HANDLER.get(event.getAction());
+
+        if (function != null) {
+            return function.apply(x, y);
+        }
+
+        invalidate();
+        return true;
     }
 
 }

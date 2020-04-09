@@ -13,6 +13,29 @@ public class KeyboardEventHandler {
 
     private static Map<String, Function<Void, Void>> movements;
 
+    /**
+     * Events
+     * 'SWIPE-DOWN',
+     * 'SWIPE-UP',
+     * 'SWIPE-LEFT',
+     * 'SWIPE-RIGHT',
+     * 'SHOT',
+     * 'GRANADE',
+     * 'AIM',
+     * 'SQUAT',
+     * 'JUMP',
+     * 'START-MOVING-DOWN',
+     * 'STOP-MOVING-DOWN',
+     * 'START-MOVING-UP',
+     * 'STOP-MOVING-UP',
+     * 'START-MOVING-LEFT',
+     * 'STOP-MOVING-LEFT',
+     * 'START-MOVING-RIGHT',
+     * 'STOP-MOVING-RIGHT'
+     * **/
+
+    //TODO implement all events
+
     static {
         movements = new ConcurrentHashMap<>();
         movements.put("UP", (empty) -> {

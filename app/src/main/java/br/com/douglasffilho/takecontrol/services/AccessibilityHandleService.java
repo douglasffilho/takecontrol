@@ -7,19 +7,20 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
-import java.text.MessageFormat;
-
 import br.com.douglasffilho.takecontrol.handlers.KeyboardEventHandler;
-import br.com.douglasffilho.takecontrol.handlers.MouseEventHandler;
 
 public class AccessibilityHandleService extends AccessibilityService {
+    private static int HEIGHT;
+    private static int WIDTH;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        HEIGHT = displayMetrics.heightPixels;
+        WIDTH = displayMetrics.widthPixels;
 
         KeyboardEventHandler.registerAccessibilityService(this);
-        MouseEventHandler.registerAccessibilityService(this);
     }
 
     @Override
@@ -68,23 +69,13 @@ public class AccessibilityHandleService extends AccessibilityService {
     }
 
     public void moveTarget(float xPercent, float yPercent) {
-        Log.i("AccessibilityHandleService", MessageFormat.format(
-                "Move to x={0} y={1}",
-                xPercent,
-                yPercent
-        ));
-
-        final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        final int height = displayMetrics.heightPixels;
-        final int width = displayMetrics.widthPixels;
-
-        final float y = height * (yPercent / 100);
-        final float x = width * (xPercent / 100);
+        final float y = HEIGHT * (yPercent / 100);
+        final float x = WIDTH * (xPercent / 100);
 
         final Path swipeUpPath = new Path();
-        swipeUpPath.moveTo(x, y);
+        swipeUpPath.moveTo(x + 0.1f, y + 0.1f);//TODO reconhecer os quadrantes de movimento e espelhar nas ações como é feito no jogo
         swipeUpPath.lineTo(x, y);
-        long swipeDuration = 10L;
+        long swipeDuration = 1L;
 
         final GestureDescription.StrokeDescription swipeUpGestureStroke = new GestureDescription.StrokeDescription(
                 swipeUpPath,

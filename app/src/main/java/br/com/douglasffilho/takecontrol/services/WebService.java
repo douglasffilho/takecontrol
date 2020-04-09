@@ -7,7 +7,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 import br.com.douglasffilho.takecontrol.handlers.KeyboardEventHandler;
-import br.com.douglasffilho.takecontrol.handlers.MouseEventHandler;
 import br.com.douglasffilho.takecontrol.queues.QueueManager;
 import br.com.douglasffilho.takecontrol.queues.Queues;
 
@@ -23,7 +22,6 @@ public class WebService extends WebSocketClient {
         this.send("App done!");
 
         KeyboardEventHandler.registerListener();
-        MouseEventHandler.registerListener();
     }
 
     @Override
